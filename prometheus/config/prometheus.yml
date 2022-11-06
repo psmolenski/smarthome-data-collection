@@ -45,6 +45,11 @@ scrape_configs:
     static_configs:
       - targets: [ '192.168.10.202:80' ]
 
+  - job_name: 'unifipoller'
+    scrape_interval: 30s
+    static_configs:
+      - targets: [ 'localhost:9130' ]
+
 
 #  - job_name: 'pushgateway'
 #    scrape_interval: 10s

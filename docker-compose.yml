@@ -14,4 +14,13 @@ services:
       - "3000:3000"
     volumes:
       - ./grafana/data:/var/lib/grafana
+    depends_on:
+      - prometheus
     restart: always
+  unpoller:
+    image: golift/unifi-poller:latest
+    depends_on:
+      - prometheus
+    volumes:
+      - ./unpoller:/config
+    restart: unless-stopped
