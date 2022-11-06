@@ -19,6 +19,8 @@ services:
     restart: always
   unpoller:
     image: golift/unifi-poller:latest
+    ports:
+      - "9130:9130"
     depends_on:
       - prometheus
     volumes:
