@@ -27,3 +27,11 @@ services:
     volumes:
       - ./unpoller:/config
     restart: unless-stopped
+  mosquitto:
+    image: eclipse-mosquitto
+    volumes:
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    ports:
+      - "1883:1883"
+      - "9001:9001"
