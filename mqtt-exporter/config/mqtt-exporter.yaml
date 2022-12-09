@@ -1,0 +1,8 @@
+mqtt:
+  host: "192.168.10.98
+
+metrics:
+  - name: "boiler_curflowtemp"
+    help: "Current flow temperature"
+    type: "gauge"
+    topic: "ems-esp/boiler_data/curflowtemp"

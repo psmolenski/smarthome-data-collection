@@ -36,3 +36,9 @@ services:
     ports:
       - "1883:1883"
       - "9001:9001"
+  mqtt-exporter:
+    image: ghcr.io/fhemberger/mqtt_exporter
+    volumes:
+      - ./mqtt-exporter/config/mqtt_exporter.yaml:/conf/mqtt_exporter.yaml:ro
+    ports:
+      - "9344:9344"
