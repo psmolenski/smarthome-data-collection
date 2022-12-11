@@ -4,7 +4,7 @@ const axios = require('axios')
 const app = express()
 const port = 80
 
-app.get('/boiler-metrics', async (req, res) => {
+app.get('/metrics', async (req, res) => {
     const response = await axios.get('http://192.168.10.56/api/boiler/')
     const metrics = Object.entries(response.data)
         .map(([propName, propValue]) => {
