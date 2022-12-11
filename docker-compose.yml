@@ -38,5 +38,7 @@ services:
       - "9001:9001"
   boiler-exporter:
     build: ./boiler-exporter/src
+    expose:
+      - 80
     ports:
       - "9080:80"
