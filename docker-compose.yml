@@ -36,9 +36,7 @@ services:
     ports:
       - "1883:1883"
       - "9001:9001"
-  mqtt-exporter:
-    image: hikhvar/mqtt2prometheus
-    volumes:
-      - ./mqtt-exporter/config/mqtt_exporter.yaml:/conf/mqtt_exporter.yaml:ro
+  boiler-exporter:
+    build: ./boiler-exporter/src
     ports:
-      - "9344:9344"
+      - "9080:80"
