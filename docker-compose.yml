@@ -38,6 +38,8 @@ services:
       - "9001:9001"
   boiler-exporter:
     build: ./boiler-exporter/src
+    environment:
+      - EMS_ESP_IP=192.168.10.56
     expose:
       - 80
     ports:
