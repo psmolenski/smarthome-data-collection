@@ -50,6 +50,11 @@ scrape_configs:
     static_configs:
       - targets: [ 'unpoller:9130' ]
 
+  - job_name: 'boiler'
+    scrape_interval: 30s
+    static_configs:
+      - targets: [ 'boiler-metrics:9081' ]
+
 
 #  - job_name: 'pushgateway'
 #    scrape_interval: 10s
