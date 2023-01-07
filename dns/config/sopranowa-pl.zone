@@ -1,0 +1,19 @@
+$TTL 2d
+
+$ORIGIN sopranowa.pl.
+
+@               IN      SOA     ns.sopranowa.pl. info.sopranowa.pl. (
+                                2023010700      ; serial
+                                12h             ; refresh
+                                15m             ; retry
+                                3w              ; expire
+                                2h              ; minimum ttl
+                                )
+
+                IN      NS      ns.sopranowa.pl.
+
+ns              IN      A       192.168.10.98
+
+; -- add dns records below
+
+*     IN      A       192.168.10.98

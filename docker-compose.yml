@@ -1,5 +1,30 @@
 version: "3.9"
 services:
+  dns:
+    image: ubuntu/bind9:9.18-22.04_beta
+    environment:
+      - TZ=Europe/Warsaw
+      - BIND9_USER=root
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    volumes:
+      - ./dns/config:/etc/bind
+      - ./dns/cache:/var/cache/bind
+      - ./dns/records:/var/lib/bind
+    restart: unless-stopped
+  reverse-proxy:
+    image: traefik:v2.9
+    # Enables the web UI and tells Traefik to listen to docker
+    command: --api.insecure=true --providers.docker
+    ports:
+      # The HTTP port
+      - "80:80"
+      # The Web UI (enabled by --api.insecure=true)
+      - "8080:8080"
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
   prometheus:
     image: prom/prometheus
     ports:
