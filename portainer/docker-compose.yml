@@ -3,10 +3,6 @@ services:
   portainer:
     image: portainer/portainer-ce:latest
     container_name: portainer
-    ports:
-      - "9000:9000"
-      - "8000:8000"
-      - "9443:9443"
     volumes:
       - portainer_data:/data
       - /var/run/docker.sock:/var/run/docker.sock
@@ -14,6 +10,7 @@ services:
     labels:
       - "traefik.http.routers.portainer.rule=Host(`portainer.sopranowa.pl`)"
       - "traefik.http.services.portainer-portainer.loadbalancer.server.port=9000"
+    network_mode: host
 volumes:
   portainer_data:
     name: portainer_data
