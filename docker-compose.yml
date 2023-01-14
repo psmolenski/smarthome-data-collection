@@ -21,7 +21,7 @@ services:
       - ./prometheus/data:/prometheus
     restart: always
     labels:
-      - "traefik.http.routers.my-container.rule=Host(`prometheus.sopranowa.pl`)"
+      - "traefik.http.routers.prometheus.rule=Host(`prometheus.sopranowa.pl`)"
   grafana:
     image: grafana/grafana-oss
     ports:
@@ -33,7 +33,7 @@ services:
       - prometheus
     restart: always
     labels:
-      - "traefik.http.routers.my-container.rule=Host(`grafana.sopranowa.pl`)"
+      - "traefik.http.routers.grafana.rule=Host(`grafana.sopranowa.pl`)"
   unpoller:
     image: golift/unifi-poller:latest
     ports:
@@ -61,4 +61,4 @@ services:
     ports:
       - "9080:80"
     labels:
-      - "traefik.http.routers.my-container.rule=Host(`boiler.sopranowa.pl`)"
+      - "traefik.http.routers.boiler-exporter.rule=Host(`boiler.sopranowa.pl`)"
