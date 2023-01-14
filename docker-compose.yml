@@ -20,6 +20,8 @@ services:
       - ./prometheus/config:/etc/prometheus/
       - ./prometheus/data:/prometheus
     restart: always
+    labels:
+      - "traefik.http.routers.my-container.rule=Host(`prometheus.sopranowa.pl`)"
   grafana:
     image: grafana/grafana-oss
     ports:
@@ -58,3 +60,5 @@ services:
       - 80
     ports:
       - "9080:80"
+    labels:
+      - "traefik.http.routers.my-container.rule=Host(`boiler.sopranowa.pl`)"
