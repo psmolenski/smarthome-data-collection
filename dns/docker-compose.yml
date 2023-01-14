@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  dns:
+    image: ubuntu/bind9:9.18-22.04_beta
+    environment:
+      - TZ=Europe/Warsaw
+      - BIND9_USER=root
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    volumes:
+      - ./config:/etc/bind
+      - ./cache:/var/cache/bind
+      - ./records:/var/lib/bind
+    restart: unless-stopped
