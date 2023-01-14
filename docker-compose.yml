@@ -30,6 +30,8 @@ services:
     depends_on:
       - prometheus
     restart: always
+    labels:
+      - "traefik.http.routers.my-container.rule=Host(`grafana.sopranowa.pl`)"
   unpoller:
     image: golift/unifi-poller:latest
     ports:
