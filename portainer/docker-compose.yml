@@ -15,3 +15,5 @@ services:
       - "traefik.http.routers.portainer.rule=Host(`portainer.sopranowa.pl`)"
 volumes:
   portainer_data:
+    name: portainer_data
+    external: true
