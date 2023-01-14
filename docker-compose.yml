@@ -7,7 +7,6 @@ services:
     volumes:
       - ./prometheus/config:/etc/prometheus/
       - ./prometheus/data:/prometheus
-    network_mode: host
     restart: always
     labels:
       - "traefik.http.routers.prometheus.rule=Host(`prometheus.sopranowa.pl`)"
@@ -20,7 +19,6 @@ services:
       - ./grafana/dashboards/home.json:/usr/share/grafana/public/dashboards/home.json
     depends_on:
       - prometheus
-    network_mode: host
     restart: always
     labels:
       - "traefik.http.routers.grafana.rule=Host(`grafana.sopranowa.pl`)"
@@ -32,7 +30,6 @@ services:
       - prometheus
     volumes:
       - ./unpoller:/config
-    network_mode: host
     restart: unless-stopped
   mosquitto:
     image: eclipse-mosquitto
@@ -43,7 +40,6 @@ services:
     ports:
       - "1883:1883"
       - "9001:9001"
-    network_mode: host
     restart: unless-stopped
   boiler-exporter:
     build: ./boiler-exporter/src
@@ -55,5 +51,4 @@ services:
       - "9080:80"
     labels:
       - "traefik.http.routers.boiler-exporter.rule=Host(`boiler.sopranowa.pl`)"
-    network_mode: host
     restart: unless-stopped

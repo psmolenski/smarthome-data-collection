@@ -10,7 +10,6 @@ services:
     labels:
       - "traefik.http.routers.portainer.rule=Host(`portainer.sopranowa.pl`)"
       - "traefik.http.services.portainer-portainer.loadbalancer.server.port=9000"
-    network_mode: host
 volumes:
   portainer_data:
     name: portainer_data
