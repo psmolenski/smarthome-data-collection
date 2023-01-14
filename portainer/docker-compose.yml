@@ -13,6 +13,7 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.http.routers.portainer.rule=Host(`portainer.sopranowa.pl`)"
+      - "traefik.http.services.portainer-portainer.loadbalancer.server.port=9000"
 volumes:
   portainer_data:
     name: portainer_data
