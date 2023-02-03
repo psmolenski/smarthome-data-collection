@@ -42,7 +42,7 @@ services:
       - "9001:9001"
     restart: unless-stopped
     labels:
-      - "traefik.http.routers.prometheus.rule=Host(`mqtt.sopranowa.pl`)"
+      - "traefik.http.routers.mosquitto.rule=Host(`mqtt.sopranowa.pl`)"
   boiler-exporter:
     build: ./boiler-exporter/src
     environment:
