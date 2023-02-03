@@ -45,10 +45,10 @@ services:
       - "traefik.tcp.services.mqtt.loadbalancer.server.port=1883"
       - "traefik.tcp.services.mqtt_websocket.loadbalancer.server.port=9001"
       - "traefik.tcp.routers.mosquitto.entrypoints=mqtt"
-      - "traefik.tcp.routers.mosquitto.rule=Host(`mqtt.sopranowa.pl`)"
+      - "traefik.tcp.routers.mosquitto.rule=HostSNI(`mqtt.sopranowa.pl`)"
       - "traefik.tcp.routers.mosquitto.service=mqtt"
       - "traefik.tcp.routers.mosquitto_websocket.entrypoints=mqtt_websocket"
-      - "traefik.tcp.routers.mosquitto_websocket.rule=Host(`mqtt.sopranowa.pl`)"
+      - "traefik.tcp.routers.mosquitto_websocket.rule=HostSNI(`mqtt.sopranowa.pl`)"
       - "traefik.tcp.routers.mosquitto_websocket.service=mqtt_websocket"
   boiler-exporter:
     build: ./boiler-exporter/src
