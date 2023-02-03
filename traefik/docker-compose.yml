@@ -3,7 +3,11 @@ services:
   traefik:
     image: traefik:v2.9
     # Enables the web UI and tells Traefik to listen to docker
-    command: --api.insecure=true --providers.docker
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker"
+      - "--enrtypoints.mqtt.address=:1883"
+      - "--entrypoints.mqtt_websocket.address=:9001"
     ports:
       # The HTTP port
       - "80:80"
